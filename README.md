@@ -9,5 +9,5 @@ Bash script that outputs:
 - Operating System,
 - Users (with permission to run interactive shells).
 
-###Usage & Dependencies
+### Usage & Dependencies
 In order for a script to work it has to be run in a EC2 container and a package **aws** must be installed in a system.
