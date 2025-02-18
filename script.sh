@@ -1,4 +1,11 @@
 #!/bin/bash
+
+if ! command -v aws 2>&1 >/dev/null
+then
+    echo "aws could not be found"
+    exit 1
+fi
+
 fileName="output.txt"
 metadataURL="http://169.254.169.254/latest/meta-data/"
 privIPv4Suffix="/local-ipv4"
@@ -20,3 +27,7 @@ function getInstanceInfo() {
 }
 
 getInstanceInfo > "./$fileName"
+
+echo "Trying to upload file..."
+aws s3 cp "./$fileName" s3://applicant-task/r4p17/ && echo "File upload successful!"
+
